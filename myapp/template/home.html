@@ -18,53 +18,83 @@
             <div class="navbar-start">
 
                 <div class="navbar-item has-dropdown is-hoverable">
-                        <a class="navbar-link">
-                            OHOME
-                        </a>
-    
-                        <div class="navbar-dropdown">
-                            <a class="navbar-item">
-                                Add OHOME
-                            </a>
-                            <a class="navbar-item">
-                                Approve OHOME
-                            </a>
-                            <hr class="navbar-divider">
-                            <a class="navbar-item" href="/user/">
-                                Add User / Display all users
-                            </a>
-                        </div>
-                    </div>
-                <div class="navbar-item has-dropdown is-hoverable">
-                        <a class="navbar-link">
-                            Settings
-                        </a>
-    
-                        <div class="navbar-dropdown">
-                            <a class="navbar-item">
-                                Edit my profile
-                            </a>
-                            <a class="navbar-item">
-                                Edit group
-                            </a>
-                        </div>
-                    </div>
-            </div>
+                    <a class="navbar-link">
+                        OHOME
+                    </a>
 
-            <div class="navbar-end">
-                <div class="navbar-item">
-                    <div class="buttons">
-                        <a class="button is-primary">
-                            <strong>Sign up</strong>
+                    <div class="navbar-dropdown">
+                        <a class="navbar-item">
+                            Add OHOME
                         </a>
-                        <a class="button is-light">
-                            Log in
+                        <a class="navbar-item">
+                            Approve OHOME
+                        </a>
+                        <hr class="navbar-divider">
+                        <a class="navbar-item" href="/user/">
+                            Add User / Display all users
+                        </a>
+                    </div>
+                </div>
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link">
+                        Settings
+                    </a>
+
+                    <div class="navbar-dropdown">
+                        <a class="navbar-item">
+                            Edit my profile
+                        </a>
+                        <a class="navbar-item">
+                            Edit group
                         </a>
                     </div>
                 </div>
             </div>
         </div>
     </nav>
+    <section class="hero is-light">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title">
+                    Let's check OHOME of...
+                </h1>
+                <div class="columns">
+                    <form class="pure-form">
+                        <div class="column">
+                                <div class="control has-icons-left">
+                                        <div class="select">
+                                          <select>
+                                            <option></option>
+                                            <option>user01</option>
+                                            <option>user02</option>
+                                            <option>user03</option>
+                                            <option>user04</option>
+                                          </select>
+                                        </div>
+                                        <div class="icon is-small is-left">
+                                                <i class="fas fa-user"></i>
+                                              </div>
+                                      </div>
+                        </div>
+                </div>
+                <div class="column">
+                    <button type="submit" class="button is-link">display ohome randomly!</button>
+                    <input type="hidden" name="users[]">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="hero is-info">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title">
+                        <blockquote>
+                            「くしゃみをした時そっとティシュを渡してくれました。くしゃみをした時そっとティシュを渡してくれました。」 by user01
+                        </blockquote>
+                </h1>
+            </div>
+        </div>
+    </section>
 </body>
 
 </html>

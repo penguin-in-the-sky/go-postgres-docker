@@ -4,8 +4,8 @@ import (
 	"log"
 	"net/http"
 
-	"./home"
-	"./user"
+	"myapp/home"
+	"myapp/user"
 
 	"github.com/gorilla/mux"
 	_ "github.com/lib/pq"

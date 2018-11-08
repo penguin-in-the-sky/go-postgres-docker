@@ -18,47 +18,34 @@
             <div class="navbar-start">
 
                 <div class="navbar-item has-dropdown is-hoverable">
-                        <a class="navbar-link">
-                            OHOME
-                        </a>
-    
-                        <div class="navbar-dropdown">
-                            <a class="navbar-item">
-                                Add OHOME
-                            </a>
-                            <a class="navbar-item">
-                                Approve OHOME
-                            </a>
-                            <hr class="navbar-divider">
-                            <a class="navbar-item" href="/user/">
-                                Add User / Display all users
-                            </a>
-                        </div>
-                    </div>
-                <div class="navbar-item has-dropdown is-hoverable">
-                        <a class="navbar-link">
-                            Settings
-                        </a>
-    
-                        <div class="navbar-dropdown">
-                            <a class="navbar-item">
-                                Edit my profile
-                            </a>
-                            <a class="navbar-item">
-                                Edit group
-                            </a>
-                        </div>
-                    </div>
-            </div>
+                    <a class="navbar-link">
+                        OHOME
+                    </a>
 
-            <div class="navbar-end">
-                <div class="navbar-item">
-                    <div class="buttons">
-                        <a class="button is-primary">
-                            <strong>Sign up</strong>
+                    <div class="navbar-dropdown">
+                        <a class="navbar-item">
+                            Add OHOME
                         </a>
-                        <a class="button is-light">
-                            Log in
+                        <a class="navbar-item">
+                            Approve OHOME
+                        </a>
+                        <hr class="navbar-divider">
+                        <a class="navbar-item" href="/user/">
+                            Add User / Display all users
+                        </a>
+                    </div>
+                </div>
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link">
+                        Settings
+                    </a>
+
+                    <div class="navbar-dropdown">
+                        <a class="navbar-item">
+                            Edit my profile
+                        </a>
+                        <a class="navbar-item">
+                            Edit group
                         </a>
                     </div>
                 </div>
@@ -75,25 +62,36 @@
                     Add user
                 </h1>
                 <div class="columns">
-                    <form class="pure-form" action="/add" method="POST">
+                    <form class="pure-form" action="/user/add" method="POST">
                         <div class="column">
+                            {{if ne .Error ""}}
+                            <div class="control has-icons-left has-icons-right is-5">
+                                <input type="text" name="name" class="input is-danger" placeholder="user name">
+                                <span class="icon is-small is-left">
+                                    <i class="fas fa-user"></i>
+                                </span>
+                            </div>
+                            <p class="help is-danger">This email is invalid</p>
+                            {{else}}
                             <div class="control has-icons-left has-icons-right is-5">
                                 <input type="text" name="name" class="input" placeholder="user name">
                                 <span class="icon is-small is-left">
                                     <i class="fas fa-user"></i>
                                 </span>
                             </div>
+                            {{end}}
                         </div>
-                        <div class="column">
-                            <button type="submit" class="button is-link">add user</button>
-                            <!-- <button type="submit"  class="bttn-unite bttn-md bttn-primary">add user</button> -->
-                        </div>
-                    </form>
-
+                    </div>
+                <div class="column">
+                    <button type="submit" class="button is-link">add user</button>
+                    <input type="hidden" name="users[]">
                 </div>
-
+                </form>
 
             </div>
+
+
+        </div>
         </div>
     </section>
 
@@ -108,7 +106,7 @@
     </section>
     <section>
         <div class="container">
-            <form class="pure-form" action="/initialize" method="GET">
+            <form class="pure-form" action="/user/initialize" method="GET">
                 <button type="submit" class="button is-danger">initialize (truncate users and add a
                     user)</button>
             </form>
