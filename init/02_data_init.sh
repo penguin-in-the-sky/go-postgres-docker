@@ -6,5 +6,12 @@ psql -U postgres -d godb << "EOSQL"
             user_name varchar(20),
             invalid_flg boolean
         );
+    CREATE TABLE gogo.praises
+        (
+            id serial,
+            content varchar(100),
+            user_id int,
+            has_approved boolean
+        );
 EOSQL
 psql -l
