@@ -9,7 +9,7 @@
 <body>
     <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-            <a class="navbar-item" href="/">
+            <a class="navbar-item is-size-4 has-text-weight-bold has-text-link" href="/">
                 OHOME BOX
             </a>
         </div>
@@ -23,7 +23,7 @@
                     </a>
 
                     <div class="navbar-dropdown">
-                        <a class="navbar-item">
+                        <a class="navbar-item" href="/add_home/">
                             Add OHOME
                         </a>
                         <a class="navbar-item">
@@ -66,12 +66,12 @@
                         <div class="column">
                             {{if ne .Error ""}}
                             <div class="control has-icons-left has-icons-right is-5">
-                                <input type="text" name="name" class="input is-danger" placeholder="user name">
+                                <input type="text" name="name" class="input is-danger" placeholder="user name" value="{{.Name}}">
                                 <span class="icon is-small is-left">
                                     <i class="fas fa-user"></i>
                                 </span>
                             </div>
-                            <p class="help is-danger">This email is invalid</p>
+                            <p class="help is-danger">1~20文字で名前を入力してください</p>
                             {{else}}
                             <div class="control has-icons-left has-icons-right is-5">
                                 <input type="text" name="name" class="input" placeholder="user name">
@@ -83,7 +83,7 @@
                         </div>
                     </div>
                 <div class="column">
-                    <button type="submit" class="button is-link">add user</button>
+                    <button type="submit" class="button is-link">Add user</button>
                     <input type="hidden" name="users[]">
                 </div>
                 </form>
@@ -107,7 +107,7 @@
     <section>
         <div class="container">
             <form class="pure-form" action="/user/initialize" method="GET">
-                <button type="submit" class="button is-danger">initialize (truncate users and add a
+                <button type="submit" class="button is-danger">Initialize (truncate users and add a
                     user)</button>
             </form>
         </div>

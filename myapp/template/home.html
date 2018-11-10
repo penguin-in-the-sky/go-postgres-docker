@@ -9,7 +9,7 @@
 <body>
     <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-            <a class="navbar-item" href="/">
+            <a class="navbar-item is-size-4 has-text-weight-bold has-text-link" href="/">
                 OHOME BOX
             </a>
         </div>
@@ -23,7 +23,7 @@
                     </a>
 
                     <div class="navbar-dropdown">
-                        <a class="navbar-item">
+                        <a class="navbar-item" href="/add_home/">
                             Add OHOME
                         </a>
                         <a class="navbar-item">
@@ -64,11 +64,9 @@
                                 <div class="control has-icons-left">
                                         <div class="select">
                                           <select>
-                                            <option></option>
-                                            <option>user01</option>
-                                            <option>user02</option>
-                                            <option>user03</option>
-                                            <option>user04</option>
+                                            <option></option>{{range .Users}}
+                                            <option>{{.Name}}</option>
+                                            {{end}}
                                           </select>
                                         </div>
                                         <div class="icon is-small is-left">
@@ -78,23 +76,25 @@
                         </div>
                 </div>
                 <div class="column">
-                    <button type="submit" class="button is-link">display ohome randomly!</button>
+                    <button type="submit" class="button is-link">Display OHOME randomly!</button>
                     <input type="hidden" name="users[]">
                 </div>
             </div>
         </div>
     </section>
+    {{if ne .Praise.Content ""}}
     <section class="hero is-info">
         <div class="hero-body">
             <div class="container">
                 <h1 class="title">
                         <blockquote>
-                            「くしゃみをした時そっとティシュを渡してくれました。くしゃみをした時そっとティシュを渡してくれました。」 by user01
+                            {{.Praise.Content}} by {{.Praise.User.Name}}
                         </blockquote>
                 </h1>
             </div>
         </div>
     </section>
+    {{end}}
 </body>
 
 </html>
