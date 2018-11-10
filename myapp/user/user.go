@@ -8,7 +8,7 @@ import (
 	"github.com/jmoiron/sqlx"
 	_ "github.com/lib/pq"
 
-	"gopkg.in/go-playground/validator.v9"
+	validator "gopkg.in/go-playground/validator.v9"
 )
 
 type Data struct {
@@ -25,7 +25,7 @@ type User struct {
 
 func ViewHandler(w http.ResponseWriter, r *http.Request) {
 
-	users := getAllUsers()
+	users := GetAllUsers()
 	var data Data
 	data.Users = users
 	data.Error = ""
@@ -48,7 +48,7 @@ func AddHandler(w http.ResponseWriter, r *http.Request) {
 		if validationErrors != nil {
 			log.Println("validation error")
 			data.Error = "name"
-			data.Users = getAllUsers()
+			data.Users = GetAllUsers()
 			renderTemplate(w, "user", &data)
 			return
 		}
@@ -92,7 +92,7 @@ func InitializeHandler(w http.ResponseWriter, r *http.Request) {
 
 }
 
-func getAllUsers() []User {
+func GetAllUsers() []User {
 	db, err := sqlx.Connect("postgres", "host=postgres port=5432 user=postgres dbname=godb sslmode=disable")
 	defer db.Close()
 	if err != nil {

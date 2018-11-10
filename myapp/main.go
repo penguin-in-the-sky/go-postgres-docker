@@ -4,6 +4,7 @@ import (
 	"log"
 	"net/http"
 
+	"myapp/addHome"
 	"myapp/home"
 	"myapp/user"
 
@@ -19,6 +20,11 @@ func main() {
 
 	// home
 	router.HandleFunc("/", home.ViewHandler).Methods("GET")
+
+	// add_home
+	router.HandleFunc("/add_home/", addHome.ViewHandler).Methods("GET")
+
+	// approve_home
 
 	// user
 	router.HandleFunc("/user/", user.ViewHandler).Methods("GET")
