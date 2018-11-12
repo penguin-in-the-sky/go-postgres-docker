@@ -1,0 +1,74 @@
+<html>
+<header>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
+    <link href="bttn.css" rel="stylesheet" type="text/plain">
+</header>
+
+<body>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item is-size-4 has-text-weight-bold has-text-link">
+                OHOME BOX
+            </a>
+        </div>
+    </nav>
+    <div class="tabs is-centered">
+            <ul>
+              <li><a href="/login">ログイン</a></li>
+              <li class="is-active"><a>ユーザ登録</a></li>
+            </ul>
+          </div>
+    <section class="hero is-primary">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title">
+                    Register an user
+                </h1>
+                <div class="columns">
+                    <form class="pure-form" action="/login" method="POST">
+                        <div class="column">
+                            <div class="field">
+                                <p class="control has-icons-left has-icons-right">
+                                    <input class="input" type="email" placeholder="Email">
+                                    <span class="icon is-small is-left">
+                                        <i class="fas fa-user"></i>
+                                    </span>
+                                </p>
+                            </div>
+                            <div class="field">
+                                <p class="control has-icons-left">
+                                    <input class="input" type="password" placeholder="Password">
+                                    <span class="icon is-small is-left">
+                                        <i class="fas fa-lock"></i>
+                                    </span>
+                                </p>
+                            </div>
+                            <div class="field">
+                                    <div class="control has-icons-left">
+                                            <div class="select">
+                                              <select name="targetUserId">
+                                                <option></option>
+                                                <option>一般ユーザ</option>
+                                                <option>管理者</option>
+                                              </select>
+                                            </div>
+                                            <div class="icon is-small is-left">
+                                                    <i class="fas fa-user-circle"></i>
+                                                  </div>
+                                          </div>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <button type="submit" class="button is-link">登録</button>
+                        </div>
+                        <div class="column">
+                        </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

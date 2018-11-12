@@ -4,12 +4,14 @@ import (
 	"log"
 	"net/http"
 
-	"myapp/addHome"
-	"myapp/home"
-	"myapp/user"
+	"myapp/handler/addPraise"
+	"myapp/handler/addUser"
+	"myapp/handler/approvePraise"
+	"myapp/handler/home"
+	"myapp/handler/login"
+	"myapp/handler/user"
 
 	"github.com/gorilla/mux"
-	_ "github.com/lib/pq"
 )
 
 func main() {
@@ -18,13 +20,23 @@ func main() {
 
 	router := mux.NewRouter()
 
+	// login
+	router.HandleFunc("/login", login.ViewHandler).Methods("GET")
+
+	// addUser
+	router.HandleFunc("/add/user", addUser.ViewHandler).Methods("GET")
+
 	// home
-	router.HandleFunc("/", home.ViewHandler).Methods("GET")
+	router.HandleFunc("/home", home.ViewHandler).Methods("GET")
+	router.HandleFunc("/display", home.DisplayPraiseHandler).Methods("GET")
 
-	// add_home
-	router.HandleFunc("/add_home/", addHome.ViewHandler).Methods("GET")
+	// addPraise
+	router.HandleFunc("/praise/add", addPraise.ViewHandler).Methods("GET")
+	router.HandleFunc("/praise/add", addPraise.AddHomeHandler).Methods("POST")
 
-	// approve_home
+	// approvePraise
+	router.HandleFunc("/praise/approve", approvePraise.ViewHandler).Methods("GET")
+	router.HandleFunc("/praise/approve", approvePraise.ApproveHandler).Methods("POST")
 
 	// user
 	router.HandleFunc("/user/", user.ViewHandler).Methods("GET")

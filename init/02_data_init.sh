@@ -3,7 +3,7 @@ psql -U postgres -d godb << "EOSQL"
     CREATE TABLE gogo.users
         (
             id serial,
-            user_name varchar(20),
+            user_name varchar(20) UNIQUE,
             invalid_flg boolean
         );
     CREATE TABLE gogo.praises
