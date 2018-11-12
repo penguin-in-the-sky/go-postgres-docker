@@ -56,44 +56,42 @@
         <div class="hero-body">
             <div class="container">
                 <h1 class="title">
-                    Let's check OHOME of...
+                    Approve OHOME
                 </h1>
-                <div class="columns">
-                    <form class="pure-form" action="/display" method="GET">
-                        <div class="column">
-                                <div class="control has-icons-left">
-                                        <div class="select">
-                                          <select name="targetUserId">
-                                            <option></option>{{range .Users}}
-                                            <option value="{{.User.ID}}" {{if .Selected}}selected{{end}}>{{.User.Name}}</option>
-                                            {{end}}
-                                          </select>
-                                        </div>
-                                        <div class="icon is-small is-left">
-                                                <i class="fas fa-user"></i>
-                                              </div>
-                                      </div>
-                        </div>
-                        <div class="column">
-                            <button type="submit" class="button is-link">Display OHOME randomly!</button>
-                        </div>
-                </div>
+                <form class="pure-form" action="/praise/approve" method="POST">
+                    <div class="field">
+                        <table class="table is-fullwidth is-bordered">
+                            <thead>
+                                <tr>
+                                    <th width="50"></th>
+                                    <th>id</th>
+                                    <th>ほめられユーザ</th>
+                                    <th>内容</th>
+                                    <th>ほめたユーザ</th>
+                                </tr>
+                            </thead>
+                            <tbody>{{range .Praises}}
+                                <tr>
+                                    <td class="has-text-centered"><label class="checkbox">
+                                            <input type="checkbox" name="approvedPraiseIds" value="{{.Id}}" {{if .HasApproved}}checked disabled{{end}}>
+                                        </label></td>
+                                    <td>{{.Id}}</td>
+                                    <td>{{.TargetUser.Name}}</td>
+                                    <td>{{.Content}}</td>
+                                    <td>{{.RegisteredUser.Name}}</td>
+                                </tr>{{end}}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="field">
+                        <button type="submit" class="button is-link">チェックしたお褒めを承認する</button>
+                        <input type="hidden" name="users[]">
+                    </div>
+                </form>
             </div>
         </div>
     </section>
-    {{if ne .Praise.Content ""}}
-    <section class="hero is-info">
-        <div class="hero-body">
-            <div class="container">
-                <h1 class="title">
-                        <blockquote>
-                            “{{.Praise.Content}}” by {{.Praise.RegisteredUser.Name}}
-                        </blockquote>
-                </h1>
-            </div>
-        </div>
-    </section>
-    {{end}}
+
 </body>
 
 </html>

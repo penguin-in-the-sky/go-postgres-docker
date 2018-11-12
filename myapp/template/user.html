@@ -9,7 +9,7 @@
 <body>
     <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-            <a class="navbar-item is-size-4 has-text-weight-bold has-text-link" href="/">
+            <a class="navbar-item is-size-4 has-text-weight-bold has-text-link" href="/home">
                 OHOME BOX
             </a>
         </div>
@@ -23,10 +23,10 @@
                     </a>
 
                     <div class="navbar-dropdown">
-                        <a class="navbar-item" href="/add_home/">
+                        <a class="navbar-item" href="/praise/add">
                             Add OHOME
                         </a>
-                        <a class="navbar-item">
+                        <a class="navbar-item" href="/praise/approve">
                             Approve OHOME
                         </a>
                         <hr class="navbar-divider">
@@ -71,7 +71,11 @@
                                     <i class="fas fa-user"></i>
                                 </span>
                             </div>
+                            {{end}}
+                            {{if eq .Error "length"}}
                             <p class="help is-danger">1~20文字で名前を入力してください</p>
+                            {{else if eq .Error "unique"}}
+                            <p class="help is-danger">既存ユーザと重複します。別のユーザ名を入力してください</p>
                             {{else}}
                             <div class="control has-icons-left has-icons-right is-5">
                                 <input type="text" name="name" class="input" placeholder="user name">
@@ -81,11 +85,11 @@
                             </div>
                             {{end}}
                         </div>
+                        <div class="column">
+                            <button type="submit" class="button is-link">Add user</button>
+                            <input type="hidden" name="users[]">
+                        </div>
                     </div>
-                <div class="column">
-                    <button type="submit" class="button is-link">Add user</button>
-                    <input type="hidden" name="users[]">
-                </div>
                 </form>
 
             </div>
