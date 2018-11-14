@@ -7,56 +7,53 @@
 </header>
 
 <body>
-    <nav class="navbar" role="navigation" aria-label="main navigation">
-        <div class="navbar-brand">
-            <a class="navbar-item is-size-4 has-text-weight-bold has-text-link" href="/home">
-                OHOME BOX
-            </a>
-        </div>
-
-        <div id="navbarBasicExample" class="navbar-menu">
-            <div class="navbar-start">
-
-                <div class="navbar-item has-dropdown is-hoverable">
-                    <a class="navbar-link">
-                        OHOME
+    
+        <nav class="navbar" role="navigation" aria-label="main navigation">
+                <div class="navbar-brand">
+                    <a class="navbar-item is-size-4 has-text-weight-bold has-text-link" href="/home">
+                        OHOME BOX
                     </a>
-
-                    <div class="navbar-dropdown">
-                        <a class="navbar-item" href="/praise/add">
-                            Add OHOME
-                        </a>
-                        <a class="navbar-item" href="/praise/approve">
-                            Approve OHOME
-                        </a>
-                        <hr class="navbar-divider">
-                        <a class="navbar-item" href="/user/">
-                            Add User / Display all users
-                        </a>
+                </div>
+        
+                <div id="navbarBasicExample" class="navbar-menu">
+                    <div class="navbar-start">
+        
+                        <div class="navbar-item has-dropdown is-hoverable">
+                            <a class="navbar-link">
+                                お褒め
+                            </a>
+        
+                            <div class="navbar-dropdown">
+                                <a class="navbar-item" href="/praise/add">
+                                    お褒め登録
+                                </a>
+                                <a class="navbar-item" href="/praise/approve">
+                                    お褒め承認
+                                </a>
+                            </div>
+                        </div>
+                        <div class="navbar-item has-dropdown is-hoverable">
+                            <a class="navbar-link">
+                                設定
+                            </a>
+        
+                            <div class="navbar-dropdown">
+                                <a class="navbar-item">
+                                    ユーザ情報編集
+                                </a>
+                                <a class="navbar-item" href="/user/">
+                                    ユーザ一覧表示
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="navbar-item has-dropdown is-hoverable">
-                    <a class="navbar-link">
-                        Settings
-                    </a>
-
-                    <div class="navbar-dropdown">
-                        <a class="navbar-item">
-                            Edit my profile
-                        </a>
-                        <a class="navbar-item">
-                            Edit group
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </nav>
+            </nav>
     <section class="hero is-light">
         <div class="hero-body">
             <div class="container">
                 <h1 class="title">
-                    Approve OHOME
+                    お褒め承認
                 </h1>
                 <form class="pure-form" action="/praise/approve" method="POST">
                     <div class="field">
