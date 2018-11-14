@@ -19,104 +19,62 @@
 
                 <div class="navbar-item has-dropdown is-hoverable">
                     <a class="navbar-link">
-                        OHOME
+                        お褒め
                     </a>
 
                     <div class="navbar-dropdown">
                         <a class="navbar-item" href="/praise/add">
-                            Add OHOME
+                            お褒め登録
                         </a>
                         <a class="navbar-item" href="/praise/approve">
-                            Approve OHOME
-                        </a>
-                        <hr class="navbar-divider">
-                        <a class="navbar-item" href="/user/">
-                            Add User / Display all users
+                            お褒め承認
                         </a>
                     </div>
                 </div>
                 <div class="navbar-item has-dropdown is-hoverable">
                     <a class="navbar-link">
-                        Settings
+                        設定
                     </a>
 
                     <div class="navbar-dropdown">
                         <a class="navbar-item">
-                            Edit my profile
+                            ユーザ情報編集
                         </a>
-                        <a class="navbar-item">
-                            Edit group
+                        <a class="navbar-item" href="/user/">
+                            ユーザ一覧表示
                         </a>
                     </div>
                 </div>
             </div>
         </div>
     </nav>
-
-
-
     <section class="hero is-light">
-        <div class="hero-body">
-            <div class="container">
-                <h1 class="title">
-                    Add user
-                </h1>
-                <div class="columns">
-                    <form class="pure-form" action="/user/add" method="POST">
-                        <div class="column">
-                            {{if ne .Error ""}}
-                            <div class="control has-icons-left has-icons-right is-5">
-                                <input type="text" name="name" class="input is-danger" placeholder="user name" value="{{.Name}}">
-                                <span class="icon is-small is-left">
-                                    <i class="fas fa-user"></i>
-                                </span>
-                            </div>
-                            {{end}}
-                            {{if eq .Error "length"}}
-                            <p class="help is-danger">1~20文字で名前を入力してください</p>
-                            {{else if eq .Error "unique"}}
-                            <p class="help is-danger">既存ユーザと重複します。別のユーザ名を入力してください</p>
-                            {{else}}
-                            <div class="control has-icons-left has-icons-right is-5">
-                                <input type="text" name="name" class="input" placeholder="user name">
-                                <span class="icon is-small is-left">
-                                    <i class="fas fa-user"></i>
-                                </span>
-                            </div>
-                            {{end}}
+            <div class="hero-body">
+                <div class="container">
+                    <h1 class="title">
+                        ユーザ一覧
+                    </h1>
+                        <div class="field">
+                            <table class="table is-fullwidth is-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>id</th>
+                                        <th>ユーザ名</th>
+                                        <th>権限</th>
+                                    </tr>
+                                </thead>
+                                <tbody>{{range .Users}}
+                                    <tr>
+                                        <td>{{.ID}}</td>
+                                        <td>{{.Name}}</td>
+                                        <td>{{.Authority}}</td>
+                                    </tr>{{end}}
+                                </tbody>
+                            </table>
                         </div>
-                        <div class="column">
-                            <button type="submit" class="button is-link">Add user</button>
-                            <input type="hidden" name="users[]">
-                        </div>
-                    </div>
-                </form>
-
+                </div>
             </div>
-
-
-        </div>
-        </div>
-    </section>
-
-    <section class="section">
-        <div class="container">
-            <h1 class="title">User list</h1>
-            <ul>{{range .Users}}
-                <li><i class="fas fa-user"></i> {{.Name}}</li>
-                {{end}}
-            </ul>
-        </div>
-    </section>
-    <section>
-        <div class="container">
-            <form class="pure-form" action="/user/initialize" method="GET">
-                <button type="submit" class="button is-danger">Initialize (truncate users and add a
-                    user)</button>
-            </form>
-        </div>
-
-    </section>
+        </section>
 
 
 

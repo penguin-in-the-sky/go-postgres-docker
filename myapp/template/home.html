@@ -3,11 +3,11 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
         crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
-    <link href="bttn.css" rel="stylesheet" type="text/plain">
 </header>
 
 <body>
-    <nav class="navbar" role="navigation" aria-label="main navigation">
+
+    <nav class="navbar nav has-shadow" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
             <a class="navbar-item is-size-4 has-text-weight-bold has-text-link" href="/home">
                 OHOME BOX
@@ -19,38 +19,43 @@
 
                 <div class="navbar-item has-dropdown is-hoverable">
                     <a class="navbar-link">
-                        OHOME
+                        お褒め
                     </a>
 
                     <div class="navbar-dropdown">
                         <a class="navbar-item" href="/praise/add">
-                            Add OHOME
+                            お褒め登録
                         </a>
                         <a class="navbar-item" href="/praise/approve">
-                            Approve OHOME
-                        </a>
-                        <hr class="navbar-divider">
-                        <a class="navbar-item" href="/user/">
-                            Add User / Display all users
+                            お褒め承認
                         </a>
                     </div>
                 </div>
                 <div class="navbar-item has-dropdown is-hoverable">
                     <a class="navbar-link">
-                        Settings
+                        設定
                     </a>
 
                     <div class="navbar-dropdown">
                         <a class="navbar-item">
-                            Edit my profile
+                            ユーザ情報編集
                         </a>
-                        <a class="navbar-item">
-                            Edit group
+                        <a class="navbar-item" href="/user/">
+                            ユーザ一覧表示
                         </a>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="navbar-end">
+                <div class="navbar-item">
+                  <div>
+                    <a class="button is-light" href="/logout">
+                      ログアウト
+                    </a>
+                  </div>
+                </div>
+              </div>
     </nav>
     <section class="hero is-light">
         <div class="hero-body">
@@ -61,21 +66,21 @@
                 <div class="columns">
                     <form class="pure-form" action="/display" method="GET">
                         <div class="column">
-                                <div class="control has-icons-left">
-                                        <div class="select">
-                                          <select name="targetUserId">
-                                            <option></option>{{range .Users}}
-                                            <option value="{{.User.ID}}" {{if .Selected}}selected{{end}}>{{.User.Name}}</option>
-                                            {{end}}
-                                          </select>
-                                        </div>
-                                        <div class="icon is-small is-left">
-                                                <i class="fas fa-user"></i>
-                                              </div>
-                                      </div>
+                            <div class="control has-icons-left">
+                                <div class="select">
+                                    <select name="targetUserId">
+                                        <option></option>{{range .Users}}
+                                        <option value="{{.User.ID}}" {{if .Selected}} selected{{end}}>{{.User.Name}}</option>
+                                        {{end}}
+                                    </select>
+                                </div>
+                                <div class="icon is-small is-left">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                            </div>
                         </div>
                         <div class="column">
-                            <button type="submit" class="button is-link">Display OHOME randomly!</button>
+                            <button type="submit" class="button is-link">お褒めをランダム表示</button>
                         </div>
                 </div>
             </div>
@@ -87,7 +92,12 @@
             <div class="container">
                 <h1 class="title">
                         <blockquote>
-                            “{{.Praise.Content}}” by {{.Praise.RegisteredUser.Name}}
+                            “{{.Praise.Content}}”
+                        </blockquote>
+                </h1>
+                <h1 class="subtitle">
+                        <blockquote>
+                            by {{.Praise.RegisteredUser.Name}}
                         </blockquote>
                 </h1>
             </div>

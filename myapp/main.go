@@ -22,9 +22,11 @@ func main() {
 
 	// login
 	router.HandleFunc("/login", login.ViewHandler).Methods("GET")
+	router.HandleFunc("/login", login.LoginHandler).Methods("POST")
 
 	// addUser
 	router.HandleFunc("/add/user", addUser.ViewHandler).Methods("GET")
+	router.HandleFunc("/add/user", addUser.AddUserHandler).Methods("POST")
 
 	// home
 	router.HandleFunc("/home", home.ViewHandler).Methods("GET")
@@ -40,8 +42,6 @@ func main() {
 
 	// user
 	router.HandleFunc("/user/", user.ViewHandler).Methods("GET")
-	router.HandleFunc("/user/initialize", user.InitializeHandler).Methods("GET")
-	router.HandleFunc("/user/add", user.AddHandler).Methods("POST")
 	log.Fatal(http.ListenAndServe(":8080", router))
 
 }
