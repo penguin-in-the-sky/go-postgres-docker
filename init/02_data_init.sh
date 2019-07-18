@@ -22,8 +22,13 @@ psql -U postgres -d godb << "EOSQL"
             has_approved boolean NOT NULL
         );
     BEGIN;
-    INSERT INTO gogo.authorities (authority, name) VALUES ('general', '一般ユーザ');
-    INSERT INTO gogo.authorities (authority, name) VALUES ('administrator', '管理者');
+    INSERT INTO gogo.authorities (authority, name) VALUES
+    ('general', '一般ユーザ'),
+    ('administrator', '管理者');
+    INSERT INTO gogo.users (user_name, password, authority, invalid_flg) VALUES
+    ('ユーザーさん', 'password', 'general', false),
+    ('ユーザーくん', 'password', 'general', false),
+    ('ユーザーちゃん', 'password', 'general', false);
     COMMIT;
 EOSQL
 psql -l
